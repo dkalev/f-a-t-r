@@ -1,9 +1,9 @@
 {
-  "name": "node-todo",
+  "name": "f-a-t-r",
   "version": "0.0.1",
-  "description": "Simple todo application.",
+  "description": "Tutorial rooms booking application",
   "main": "server.js",
-  "author": "Scotch",
+  "author": "ASWENG",
   "dependencies": {
     "body-parser": "^1.18.2",
     "mongoose": "4.10.8",
