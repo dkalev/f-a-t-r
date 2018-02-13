@@ -1,22 +1,22 @@
-angular.module('todoController', [])
+angular.module('usersController', [])
 
-	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	// inject the User service factory into our controller
+	.controller('usersController', ['$scope','$http','Users', function($scope, $http, Users) {
 		$scope.formData = {};
 		$scope.loading = true;
 
 		// GET =====================================================================
-		// when landing on the page, get all todos and show them
-		// use the service to get all the todos
-		Todos.get()
+		// when landing on the page, get all users and show them
+		// use the service to get all the users
+		Users.get()
 			.success(function(data) {
-				$scope.todos = data;
+				$scope.users = data;
 				$scope.loading = false;
 			});
 
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
-		$scope.createTodo = function() {
+		$scope.createUser = function() {
 
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
@@ -24,27 +24,27 @@ angular.module('todoController', [])
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
-				Todos.create($scope.formData)
+				Users.create($scope.formData)
 
-					// if successful creation, call our get function to get all the new todos
+					// if successful creation, call our get function to get all the new users
 					.success(function(data) {
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.todos = data; // assign our new list of todos
+						$scope.users = data; // assign our new list of users
 					});
 			}
 		};
 
 		// DELETE ==================================================================
-		// delete a todo after checking it
+		// delete a user after checking it
 		$scope.deleteTodo = function(id) {
 			$scope.loading = true;
 
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
+			Users.delete(id)
+				// if successful creation, call our get function to get all the new users
 				.success(function(data) {
 					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
+					$scope.users = data; // assign our new list of users
 				});
 		};
 	}]);
