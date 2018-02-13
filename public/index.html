@@ -22,30 +22,37 @@
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 
-	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
-	<script src="js/services/todos.js"></script> <!-- load our todo service -->
-	<script src="js/core.js"></script> <!-- load our main application -->
+	<!-- load controllers -->
+	<script src="js/controllers/bookingsController.js"></script>
+	<script src="js/controllers/tutorialRoomsController.js"></script>
+	<script src="js/controllers/usersController.js"></script>
+	 <!-- load services -->
+	<script src="js/services/bookings.js"></script>
+	<script src="js/services/users.js"></script>
+	<script src="js/services/tutorialRooms.js"></script>
+	<!-- load main application -->
+	<script src="js/core.js"></script>
 
 </head>
 <!-- SET THE CONTROLLER -->
-<body ng-controller="mainController">
+<body ng-controller="bookingsController">
 	<div class="container">
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>I'm a Todo-aholic <span class="label label-info">{{ users.length }}</span></h1>
 		</div>
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				
 
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
+
+				<!-- LOOP OVER THE TODOS IN $scope.users -->
+				<div class="checkbox" ng-repeat="user in users">
 					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+						<input type="checkbox" ng-click="deleteUser(user._id)"> {{ user.text }}
 					</label>
 				</div>
 
@@ -67,7 +74,7 @@
 					</div>
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createUser()">Add</button>
 				</form>
 			</div>
 		</div>

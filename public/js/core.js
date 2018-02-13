@@ -1,1 +1,8 @@
-angular.module('scotchTodo', ['todoController', 'todoService']);
+angular.module('scotchTodo', [
+  'usersController', 
+  'bookingsController',
+  'tutorialRoomsController',
+  'bookingService',
+  'tutorialRoomService',
+  'userService'
+]);
