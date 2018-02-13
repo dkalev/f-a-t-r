@@ -1,0 +1,30 @@
+select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:normal 15px/25px Arial, Sans-Serif;
+    color:black;
+    border:1px solid #ccc;
+	padding : 10px;
+	
+}
+
+option {
+	background-color: #f6f6f6;
+}
+
+.dropbtn {
+	display : inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+	border-radius : 2px;
+	margin-left : 50px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
