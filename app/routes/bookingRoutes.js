@@ -1,6 +1,17 @@
 var Booking = require('./../models/booking');
 
 module.exports = function (app) {
+
+  app.get('/api/bookings', function (req, res) {
+    Booking.find(function (err, bookings) {
+
+      if (err)
+        res.send(err);
+      res.json(bookings); // return all bookings in JSON format
+    });
+  });
+
+
   app.post('/api/booking', function (req, res) {
 
     // create a new booking, information comes from AJAX request from Angular
@@ -25,17 +36,6 @@ module.exports = function (app) {
     }, function (err, todo) {
         if (err)
             res.send(err);
-    });
-
-    //return all bookings
-    app.get('/api/bookings', function (req, res) {
-      Booking.find(function (err, bookings) {
-
-        if (err)
-          res.send(err);
-
-        res.json(bookings); // return all bookings in JSON format
-      });
     });
   });
 };

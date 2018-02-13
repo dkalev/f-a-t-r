@@ -1,6 +1,14 @@
 var User = require('./../models/user');
 
 module.exports = function (app) {
+
+  app.get('/api/users', function(req, res) {
+    User.find(function(err, users) {
+      if(err)
+        res.send(err);
+      res.json(users);
+    });
+  });
   app.post('/api/user', function(req, res) {
     User.create({
 
@@ -12,5 +20,17 @@ module.exports = function (app) {
         if (err)
           res.send(err);
     });
+  });
+
+  // delete an user
+  app.delete('/api/users/:user_id', function (req, res) {
+    User.remove({
+        _id: req.params.user_id
+    }, function (err, todo) {
+        if (err)
+            res.send(err);
+    });
+
+    //update user profile
   });
 }
