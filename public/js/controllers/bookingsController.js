@@ -1,4 +1,4 @@
-angular.module('bookingsController', [])
+angular.module('mainApp')
 
 	// inject the Booking service factory into our controller
 	.controller('bookingsController', ['$scope','$http','Bookings', function($scope, $http, Bookings) {

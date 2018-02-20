@@ -1,4 +1,4 @@
-angular.module('usersController', [])
+angular.module('mainApp')
 
 	// inject the User service factory into our controller
 	.controller('usersController', ['$scope','$http','Users', function($scope, $http, Users) {

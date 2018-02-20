@@ -1,4 +1,4 @@
-angular.module('bookingService', [])
+angular.module('mainApp')
 
 	// each function returns a promise object
 	.factory('Bookings', ['$http',function($http) {

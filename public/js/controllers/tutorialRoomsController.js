@@ -1,4 +1,4 @@
-angular.module('tutorialRoomsController', [])
+angular.module('mainApp')
 
 	// inject the TutorialRoom service factory into our controller
 	.controller('tutorialRoomsController', ['$scope','$http','TutorialRooms', function($scope, $http, TutorialRooms) {

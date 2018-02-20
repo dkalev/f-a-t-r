@@ -1,4 +1,4 @@
-angular.module('tutorialRoomService', [])
+angular.module('mainApp')
 
 	// each function returns a promise object
 	.factory('Users', ['$http',function($http) {
