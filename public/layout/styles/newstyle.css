@@ -2,7 +2,7 @@ select {
     cursor:pointer;
     display:inline-block;
     position:relative;
-    font:normal 15px/25px Arial, Sans-Serif;
+    font:normal 14px/25px Arial, Sans-Serif;
     color:black;
     border:1px solid #ccc;
 	padding : 10px;
