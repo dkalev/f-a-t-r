@@ -28,24 +28,22 @@
 	<!-- load main application -->
 
 
-	<script src="layout/scripts/jquery.min.js"></script>
-	<script src="layout/scripts/jquery.backtotop.js"></script>
-	<script src="layout/scripts/jquery.mobilemenu.js"></script>
-	<script src="layout/scripts/jquery.flexslider-min.js"></script>
+	<script src="./layout/scripts/jquery.min.js"></script>
+	<script src="./layout/scripts/jquery.backtotop.js"></script>
+	<script src="./layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="./layout/scripts/jquery.flexslider-min.js"></script>
 
 
 </head>
 <!-- SET THE CONTROLLER -->
 <body id="top" ng-controller="usersController">
-	<div class="bgded overlay" style="background-image:url('images/hive_01.jpg');">
 
-		<header ng-include="'templates/navbar.html'"></header>
+	<header ng-include="'templates/navbar.html'"></header>
 
-		<div ui-view></div>
+	<div ui-view></div>
 
-		<footer ng-include="'templates/footer.html'"></footer>
+	<footer ng-include="'templates/footer.html'"></footer>
 
-	</div>
 
 </body>
 </html>
