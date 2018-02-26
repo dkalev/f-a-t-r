@@ -5,11 +5,11 @@
     <div class="one_half first">
       <div class="inspace-30 row3">
         <h6 class="heading">Sign In!</h6>
-        <form method="post" action="#">
+        <form name="myform" id="myform" action="#">
           <fieldset>
-            <input type="email" placeholder = "Email" ng-model="mail">
-            <input type="Password" value="" placeholder="Password">
-            <button type="submit" style = "background-color:#4CAF50;" value="submit">Enter</button>
+            <input type="email" placeholder = "Email" ng-model="email">
+            <input type="Password" value="" placeholder="password">
+            <!--<button type="submit" style = "background-color:#4CAF50;" value="submit">Enter</button>-->
 			<button type="submit" style = "margin-top:5px;" value="submit" ng-click="register()">Register</button>
           </fieldset>
         </form>

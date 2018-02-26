@@ -10,6 +10,6 @@ var app = angular.module('mainApp', [
     })
     .state('bookTutorial', {
       url: '/',
-      templateUrl: 'templates/bookTutorial.html'
+      templateUrl: 'templates/booking.html'
     });
 }]);
