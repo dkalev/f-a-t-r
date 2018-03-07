@@ -4,11 +4,44 @@ angular.module('mainApp')
 	.controller('usersController', ['$scope','$http','Users', function($scope, $http, Users) {
 		$scope.formData = {};
 		$scope.loading = true;
+		
+		
+		//	Custom Register ============================================================
+		$scope.register = function() {
+		
+			this.user.username = "Chicken1";
+			console.log(this.user);
+			Users.create(this.user).success(function(data) {
+				console.log(data);
+			});
+		};
+
+		//	Custom Log In ==============================================================
+		var tst;
+		
+		getdata = function() {
+			var p = tst;
+			console.log($scope.users);
+		}
+		
+		$scope.login = function() {
+			
+			console.log($scope.users);
+			
+			Users.get().success(function(data) {
+				$scope.users = data;
+				
+				console.log($scope.users);
+			});
+			
+			console.log($scope.users);
+		};
+		
 
 		// GET =====================================================================
 		// when landing on the page, get all users and show them
 		// use the service to get all the users
-		Users.get()
+		/*Users.get()
 			.success(function(data) {
 				$scope.users = data;
 				$scope.loading = false;
@@ -46,5 +79,5 @@ angular.module('mainApp')
 					$scope.loading = false;
 					$scope.users = data; // assign our new list of users
 				});
-		};
+		};*/
 	}]);
