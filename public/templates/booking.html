@@ -6,25 +6,27 @@
       <!-- ################################################################################################ -->
       <h1>Select your Date</h1>
 
-      <select id = "selectbox_date">
-		  <option value = ""> Select A Date &hellip;</option>
+      <select id = "selectbox_date" ng-change ="onChange()" ng-model="select.date">
+		<option value = "0"> Select A Date &hellip;</option>
+		<option ng-repeat = "option in select.dateOptions" value="{{option.id}}">{{option.name}}</option> 
+		  <!--<option value = ""> Select A Date &hellip;</option>
 		  <option value = "0"> 13 Feb 2018 </option>
 		  <option value = "1"> 14 Feb 2018 </option>
-		  <option value = "2"> 15 Feb 2018 </option>
+		  <option value = "2"> 15 Feb 2018 </option>-->
 	  </select>
 	  
 	  <select id = "selectbox_timeslot">
-		  <option value = ""> Select A TimeSlot &hellip;</option>
-		  <option value = "0"> 0830hrs </option>
+		<option value = "0"> Select A TimeSlot &hellip;</option>
+		<option ng-repeat = "option in select.timeslotOptions" value="{{option}}">{{option}}hrs</option>
+		  
+		  <!--<option value = "0"> 0830hrs </option>
 		  <option value = "1"> 0930hrs </option>
-		  <option value = "2"> 1030hrs </option>
+		  <option value = "2"> 1030hrs </option>-->
 	  </select>
 	  
 	  <select id = "selectbox_tr">
-		  <option value = ""> Select A TR &hellip;</option>
-		  <option value = "0"> TR+1 </option>
-		  <option value = "1"> TR+2 </option>
-		  <option value = "2"> TR+3 </option>
+		  <option value = "0"> Select A TR &hellip;</option>
+		  <option ng-repeat = "option in select.trOptions" value="{{option}}">TR+{{option}}</option>
 	  </select>
 	  
 	  <button class = "dropbtn"> Submit </button>
@@ -70,79 +72,46 @@
 			</table>
 			</div>
 	</div>
-      <div id="comments" style = "padding-top:50px;">
-        <h2>Comments</h2>
-        <ul>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article>
-              <header>
-                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
-                <address>
-                By <a href="#">A Name</a>
-                </address>
-                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-              </header>
-              <div class="comcont">
-                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-              </div>
-            </article>
-          </li>
-        </ul>
-        <h2>Write A Comment</h2>
-        <form action="#" method="post">
-          <div class="one_third first">
-            <label for="name">Name <span>*</span></label>
-            <input type="text" name="name" id="name" value="" size="22" required>
-          </div>
-          <div class="one_third">
-            <label for="email">Mail <span>*</span></label>
-            <input type="email" name="email" id="email" value="" size="22" required>
-          </div>
-          <div class="one_third">
-            <label for="url">Website</label>
-            <input type="url" name="url" id="url" value="" size="22">
-          </div>
-          <div class="block clear">
-            <label for="comment">Your Comment</label>
-            <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
-          </div>
-          <div>
-            <input type="submit" name="submit" value="Submit Form">
-            &nbsp;
-            <input type="reset" name="reset" value="Reset Form">
-          </div>
-        </form>
-      </div>
-      <!-- ################################################################################################ -->
-    </div>
+	<div id="" style = "padding-top:50px;">
+		<h2>Cheat Sheet Insert TutorialRoom ( Test Insert into mongoDB )</h2>
+		<form name="newform" id = "newform" action="#">
+			<div class="one_third first">
+				<input type="number" placeholder = "Room No." ng-model="tut.roomNumber">
+			</div>
+			<div class="one_third">
+				<input type="number" placeholder = "Date" ng-model="tut.date">
+			</div>
+			<div class="one_third">
+				<select id = "selectbox_day" ng-model="tut.day">
+					<option value = ""> Select A Day &hellip;</option>
+					<option value = "Monday"> Monday </option>
+					<option value = "Tuesday"> Tuesday </option>
+					<option value = "Wednesday"> Wednesday </option>
+					<option value = "Thursday"> Thursday </option>
+					<option value = "Friday"> Friday </option>
+				</select>
+			</div>
+			<input type="submit" ng-click="createtutorialroom()" value="Submit Form">
+			<!--<input type="reset" name="reset" value="Reset Form">-->
+		</form>
+	</div>
+    <!-- ################################################################################################ -->
+	<div>
+		<h2>Cheat Sheet Insert TimeSlot ( Test Insert into mongoDB )</h2>
+		<form name="newform" id = "newform" action="#">
+			<div class="one_third first">
+				<input type="number" placeholder = "Start Time" ng-model="time.start_time">
+			</div>
+			<div class="one_third">
+				<input type="number" placeholder = "End Time" ng-model="time.end_time">
+			</div>
+			<div class="one_third">
+				<input type="number" placeholder = "Vancancy" ng-model="time.vacancy">
+			</div>
+			<input type="submit" ng-click="createtimeslot()" value="Submit Form">
+			<!--<input type="reset" name="reset" value="Reset Form">-->
+		</form>
+	</div>
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>
