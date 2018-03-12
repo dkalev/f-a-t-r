@@ -1,0 +1,71 @@
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      <!-- ################################################################################################ -->
+      <h1>Enter a Module Code :</h1>
+      <select id = "selectbox_module">
+		  <option value = ""> Select A Module &hellip;</option>
+		  <option value = "0"> CZ1001 </option>
+		  <option value = "1"> CZ1002 </option>
+		  <option value = "2"> CZ1003 </option>
+	  </select>
+	  <button class = "dropbtn"> Submit </button>
+      
+      <div id="comments" style="padding-top:30px;">
+        <h2>Entries</h2>
+        <ul>
+          <li ng-repeat = "display in display.displayOptions" value="{{display._forumId}}">
+            <article>
+              <header>
+                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                <address>
+                By <a href="#">{{display.postedBy}}</a>
+                </address>
+                <time>{{display.createdAt}}</time>
+              </header>
+			  <a style="font-size : 20px;padding-top:10px;" ui-sref="forumTopic({id:display._id})">{{display._id}} : {{display.modCode}} : {{display.title}} </a>
+              <div class="comcont">
+                <p>{{display.comment}}</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+        <h2>Write A New Post</h2>
+        <form action="#">
+          <div class="one_third first">
+            <label for="title">Title <span>*</span></label>
+            <input type="text" name="title" id="title" value="" size="22" ng-model="forum.title" required>
+          </div>
+          <div class="one_third">
+            <label for="modulecode">Module Code<span>*</span></label>
+            <input type="text" name="modCod" id="modCod" value="" size="22" ng-model="forum.modCode" required>
+          </div>
+          <!--<div class="one_third">
+            <label for="url">Study Location</label>
+            <select id = "selectbox_module">
+				<option value = ""> Select Current Booking &hellip;</option>
+				<option value = "0"> CZ1001 </option>
+				<option value = "1"> CZ1002 </option>
+				<option value = "2"> CZ1003 </option>
+			</select>
+          </div>-->
+          <div class="block clear">
+            <label for="comment">Your Comment</label>
+            <textarea name="comment" id="comment" cols="25" rows="10" ng-model = "forum.comment"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Submit Form" ng-click="create()">
+            &nbsp;
+            <input type="reset" name="reset" value="Reset Form">
+          </div>
+        </form>
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>

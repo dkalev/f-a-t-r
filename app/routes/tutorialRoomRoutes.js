@@ -24,4 +24,14 @@ module.exports = function (app) {
     });
   });
   
+  app.put('/api/tutorialroom', function(req, res) {
+	  
+	  TutorialRoom.update({_id : req.body.tutRoom_id}, 
+						  { $push : {timeSlots : req.body.timeSlot}} ,
+	  function(err, todo) {
+		if ( err )
+			res.send(err);
+	  });
+  });
+  
 }

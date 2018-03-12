@@ -11,6 +11,17 @@ var app = angular.module('mainApp', [
     .state('bookTutorial', {
       url: '/',
 	  controller:'tutorialRoomsController',
-      templateUrl: 'templates/booking.html'
-    });
+      templateUrl: 'templates/booking_menu.html'
+    })
+	.state('forumPost', {
+		url : '/forumPost',
+		controller : 'forumPostsController',
+		templateUrl: 'templates/forum_menu.html'
+	})
+	.state('forumTopic', {
+		url : '/forumTopic/:id',
+		controller : 'forumPostsController',
+		templateUrl : 'templates/forum_topic.html',
+		params : {id : null}
+	});
 }]);

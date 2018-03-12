@@ -9,7 +9,7 @@ angular.module('mainApp')
 		//	Custom Register ============================================================
 		$scope.register = function() {
 
-			this.user.username = "Chicken2";
+			this.user.username = "Chicken3";
 			console.log(this.user);
 			Users.create(this.user).success(function(data) {
 				console.log(data);
@@ -17,13 +17,6 @@ angular.module('mainApp')
 		};
 
 		//	Custom Log In ==============================================================
-		var tst;
-
-		getdata = function() {
-			var p = tst;
-			console.log($scope.users);
-		}
-
 		$scope.login = function() {
 
 			console.log($scope.users);

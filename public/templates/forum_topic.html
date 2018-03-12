@@ -1,0 +1,56 @@
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      
+      <div id="comments" style="padding-top:30px;">
+        <h2>{{display.displayOriginal.title}}</h2>
+		<article style = "background-color:#b9deff;border-radius:10px; padding:10px;">
+              <header>
+                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                <address style = "font-size:15px;">
+                By <a href="#">{{display.displayOriginal.postedBy}}</a>
+                </address>
+                <time>{{display.displayOriginal.createdAt}}</time>
+              </header>
+              <div class="comcont">
+                <p style="font-size:20px;">{{display.displayOriginal.comment}}</p>
+              </div>
+        </article>
+        <ul>
+          <li ng-repeat = "reply in display.displayReplies" value="{{}}">
+            <article style = "background-color:#ffdab9;border-radius:10px; padding:10px;">
+              <header>
+                <figure class="avatar"><img src="../images/demo/avatar.png" alt=""></figure>
+                <address style = "font-size:15px;">
+                By <a href="#">{{reply.postedBy}}</a>
+                </address>
+                <time>{{reply.createdAt}}</time>
+              </header>
+              <div class="comcont">
+                <p style="font-size:20px;">{{reply.comment}}</p>
+              </div>
+        </article>
+          </li>
+        </ul>
+        <h2>Reply to Post</h2>
+        <form action="#">
+          <div class="block clear">
+            <label for="comment">Your Comment</label>
+            <textarea name="comment" id="comment" cols="25" rows="10" ng-model = "forum.comment"></textarea>
+          </div>
+          <div>
+            <input type="submit" name="submit" value="Submit Form" ng-click="create()">
+            &nbsp;
+            <input type="reset" name="reset" value="Reset Form">
+          </div>
+        </form>
+      </div>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>

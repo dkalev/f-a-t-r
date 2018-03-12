@@ -15,7 +15,7 @@
 		  <option value = "2"> 15 Feb 2018 </option>-->
 	  </select>
 	  
-	  <select id = "selectbox_timeslot">
+	  <select id = "selectbox_timeslot" ng-change ="onChange()" ng-model="select.timeslot">
 		<option value = "0"> Select A TimeSlot &hellip;</option>
 		<option ng-repeat = "option in select.timeslotOptions" value="{{option}}">{{option}}hrs</option>
 		  
@@ -24,17 +24,17 @@
 		  <option value = "2"> 1030hrs </option>-->
 	  </select>
 	  
-	  <select id = "selectbox_tr">
+	  <select id = "selectbox_tr" ng-change ="onChange()" ng-model="select.tr">
 		  <option value = "0"> Select A TR &hellip;</option>
 		  <option ng-repeat = "option in select.trOptions" value="{{option}}">TR+{{option}}</option>
 	  </select>
 	  
-	  <button class = "dropbtn"> Submit </button>
+	  <button class = "dropbtn" ng-click = "submit_table()"> Submit </button>
       
 	<div style = "padding-top : 50px">
 		<h1>Result(s)</h1>
 			<div class="scrollable">
-			<table>
+			<table ng-model="table.tb">
 			  <thead>
 				<tr>
 				  <th>Date</th>
@@ -44,13 +44,13 @@
 				</tr>
 			  </thead>
 			  <tbody>
-				<tr>
-				  <td><a href="#">Value 1</a></td>
-				  <td>Value 2</td>
-				  <td>Value 3</td>
-				  <td>Value 4</td>
+				<tr ng-repeat = "option in table.tbOptions" value = "{{}}">
+				  <td><a href="#">{{option.date}}</a></td>
+				  <td>{{option.timeslot}}</td>
+				  <td>{{option.room}}</td>
+				  <td>{{option.vacancy}}</td>
 				</tr>
-				<tr>
+				<!--<tr>
 				  <td>Value 5</td>
 				  <td>Value 6</td>
 				  <td>Value 7</td>
@@ -67,7 +67,7 @@
 				  <td><a href="#">Value 14</a></td>
 				  <td>Value 15</td>
 				  <td>Value 16</td>
-				</tr>
+				</tr>-->
 			  </tbody>
 			</table>
 			</div>
@@ -111,6 +111,21 @@
 			<input type="submit" ng-click="createtimeslot()" value="Submit Form">
 			<!--<input type="reset" name="reset" value="Reset Form">-->
 		</form>
+	</div>
+	
+	<div id="" style = "padding-top:50px;">
+		<h2>Cheat Sheet Combine</h2>
+		<select id = "" ng-model="combinetut.tutorial">
+		<option value = "0"> Select A Tutorial ID &hellip;</option>
+		<option ng-repeat = "option in combinetut.tutorialOptions" value="{{option._id}}">{{option._id}}</option> 
+	  </select>
+	  
+	  <select id = "" ng-model="combinetime.timeslot">
+		<option value = "0"> Select A TimeSlot &hellip;</option>
+		<option ng-repeat = "option in combinetime.timeslotOptions" value="{{option._id}}">{{option._id}}</option>
+	  </select>
+	  
+	  <input type="submit" ng-click="combination()" value="Combine">
 	</div>
     <!-- ################################################################################################ -->
     <!-- / main body -->
