@@ -12,6 +12,6 @@ angular.module('mainApp')
 			
 			update : function(combinedData) {
 				return $http.put('/api/tutorialroom', combinedData);
-			}
+			},
 		}
 	}]);

@@ -11,6 +11,12 @@ angular.module('mainApp')
 			},
 			delete : function(id) {
 				return $http.delete('/api/users/' + id);
+			},
+			insertuserbooking : function(data) {
+				return $http.put('/api/user', data);
+			},
+			removebooking : function (data)  { 
+				return $http.put('/api/userid', data);
 			}
 		}
 	}]);

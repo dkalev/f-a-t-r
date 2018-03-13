@@ -23,5 +23,10 @@ var app = angular.module('mainApp', [
 		controller : 'forumPostsController',
 		templateUrl : 'templates/forum_topic.html',
 		params : {id : null}
+	})
+	.state('profile', {
+		url : '/profile',
+		controller : 'usersController',
+		templateUrl: 'templates/profile.html'
 	});
 }]);

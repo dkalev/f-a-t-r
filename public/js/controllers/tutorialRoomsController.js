@@ -1,10 +1,11 @@
 angular.module('mainApp')
 
 	// inject the TutorialRoom service factory into our controller
-	.controller('tutorialRoomsController', ['$scope','$http','TutorialRooms', 'TimeSlots', function($scope, $http, TutorialRooms, TimeSlots) {
+	.controller('tutorialRoomsController', ['$scope','$http','TutorialRooms', 'TimeSlots', 'Users', function($scope, $http, TutorialRooms, TimeSlots, Users) {
 		$scope.overallTutData = [];
 		$scope.overallTimeData = [];
 		$scope.loading = true;
+		document.getElementById('mySelection').style.display = "none";
 		
 		// POST ===================================================================
 		$scope.createtutorialroom = function() {
@@ -53,28 +54,44 @@ angular.module('mainApp')
 		
 		$scope.submit_table = function() {
 			
-			var tempData = $scope.overallTutData;
+			console.log($scope.overallTutData);
+			var tempData = $scope.overallTutData.slice();
 			
 			console.log(tempData);
+			document.getElementById('mySelection').style.display = "none";
 			
 			// Check for dates first
+			
+			var size = tempData.length;
+
 			if ( $scope.select.date != 0 ) {
 				for ( var i = 0; i < tempData.length; i++ )
-					if ( $scope.select.date != tempData[i].date )
+					if ( $scope.select.date != tempData[i].date ){
 						tempData.splice(i,1);
+						i--;
+					}
 			}
+
 			//	Check for the TutorialRoom
 			if ( $scope.select.tr != 0 ) {
+				console.log('run');
 				for ( var i = 0; i < tempData.length; i++ )
-					if ( $scope.select.tr != tempData[i].roomNumber )
-						tempData.splice[i,1];
+					if ( $scope.select.tr != tempData[i].roomNumber ) {
+						tempData.splice(i,1);
+						i--;
+						console.log(i);
+					}
 			}
+			console.log('runPost');
+			
 			//	Check for the TimeSlot
 			if ( $scope.select.timeslot != 0 ) {
 				for ( var i = 0; i < tempData.length; i++ )
 					for ( var n = 0; n < tempData[i].timeSlots.length; n++ )
-						if ( $scope.select.timeslot != tempData[i].timeSlots[n].start_time )
+						if ( $scope.select.timeslot != tempData[i].timeSlots[n].start_time ) {
 							tempData[i].timeSlots.splice(n,1);
+							n--;
+						}
 			}
 			
 			
@@ -85,6 +102,7 @@ angular.module('mainApp')
 			for ( var i = 0; i < tempData.length; i++ ) {
 				for ( var n = 0; n < tempData[i].timeSlots.length; n++ ) {
 					var storage = [];
+					storage.id = tempData[i].timeSlots[n]._id;
 					storage.date = tempData[i].date;
 					storage.timeslot = tempData[i].timeSlots[n].start_time;
 					storage.room = tempData[i].roomNumber;
@@ -99,6 +117,69 @@ angular.module('mainApp')
 			//console.log(tableData);
 		}
 		
+		$scope.selectDate = function(option) {
+			console.log(option);
+			$scope.details = option;
+			document.getElementById('mySelection').style.display = "block";
+			document.getElementById('mySelectionStyle').style.backgroundColor = '#b9deff';
+		}
+		
+		$scope.submit_selection = function() {
+			
+			var dataIn = ['5a9564e1b530771b3046e370',[$scope.details.id, $scope.details.date, $scope.details.timeslot, $scope.details.room]];
+			//console.log(dataIn);
+			
+			var curUser = [];
+			Users.get().success(function(data) {
+				//	Pull the Correct user data
+				for ( var i = 0 ; i < data.length; i ++ )
+					if ( data[i]._id == dataIn[0] ) {
+						curUser = data[i]; break;
+					}
+				//	Check if the timeslot exists in the timeSlots array
+				
+				var err = "Nil";
+				
+				console.log(curUser.bookings.length);
+				if ( curUser.bookings.length < 3 ) {
+					for ( var n = 0; n < curUser.bookings.length; n++ ) {
+						var arr = curUser.bookings[n].split(',');
+						if ( $scope.details.id == arr[0] ) {
+							err = "Exists";
+							break;
+						}
+						if ( $scope.details.date == arr[1] && $scope.details.timeslot == arr[2] ) {
+							err = "Clash";
+							break;
+						}
+					}
+				}
+				else 
+					err = "Limit";
+						//if ( $scope.details.id == curUser.timeSlots[n][0] )
+				if ( err == "Nil" )	{//	Success, No problems
+					Users.insertuserbooking(dataIn).success(function(data) {
+					});
+				document.getElementById('mySelectionStyle').style.backgroundColor = '#d9ffb3';
+				$scope.details.returnMsg = "YOU HAVE SUCCESSFULLY BOOKED THIS TIMESLOT";
+				}
+				else {
+					console.log(err);
+					if ( err == "Limit" )
+						$scope.details.returnMsg = "YOU HAVE HIT YOUR MAX LIMIT";
+					else if ( err == "Exists" )
+						$scope.details.returnMsg = "YOU HAVE ALREADY BOOKED THIS TIMING ON THIS DATE";
+					else if ( err == "Clash" )
+						$scope.details.returnMsg = "THIS TIMESLOT HAS CLASHED";
+					document.getElementById('mySelectionStyle').style.backgroundColor = '#ffcccb';
+				}
+				
+				
+			});
+			
+		};
+		
+		
 		// GET =====================================================================
 		TutorialRooms.get().success(function(data) {
 			//console.log(data);
@@ -106,6 +187,9 @@ angular.module('mainApp')
 			var date_option = [];
 			var tr_option = [];
 			
+			$scope.overallTutData = data;
+			console.log($scope.overallTutData);
+			console.log(data);
 			for ( var i = 0; i < data.length; i++ ) {
 				if ( date_option.indexOf(data[i].date) == -1 )
 					date_option.push(data[i].date);
@@ -115,7 +199,7 @@ angular.module('mainApp')
 			
 			//$scope.select.date = '0';
 			
-			$scope.overallTutData = data;
+			
 			
 			$scope.combinetut = {
 				tutorialOptions : data

@@ -9,6 +9,30 @@ module.exports = function (app) {
       res.json(users);
     });
   });
+  
+  
+   app.put('/api/user', function(req,res) {
+	  console.log(req.body[1]);
+	  User.update({_id : req.body[0]},
+		  {$push : {bookings : req.body[1]},
+		  },
+	  function(err, todo) {
+		 if ( err )
+			res.send(err);
+	  });
+  });
+  
+  
+  app.put('/api/userid', function(req,res,next) {
+	  console.log(req.body[1]);
+	  User.update({_id : req.body[0]},
+		  {$pull : {bookings : req.body[1]},
+		  },
+	  function(err, todo) {
+		 if ( err )
+			res.send(err);
+	  });
+  });
 	
 
   app.post('/api/user', function(req, res) {

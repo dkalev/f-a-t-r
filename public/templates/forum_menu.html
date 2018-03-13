@@ -5,13 +5,12 @@
     <div class="content"> 
       <!-- ################################################################################################ -->
       <h1>Enter a Module Code :</h1>
-      <select id = "selectbox_module">
-		  <option value = ""> Select A Module &hellip;</option>
-		  <option value = "0"> CZ1001 </option>
-		  <option value = "1"> CZ1002 </option>
-		  <option value = "2"> CZ1003 </option>
+      <select id = "selectbox_module" ng-model="select.module">
+		  <option value = "0"> Select A Module &hellip;</option>
+		  <option ng-repeat = "option in select.moduleOptions" value="{{option}}">{{option}}</option>
+		  <input type="submit" style=" position:relative;top:10px;"ng-click="search()" value="Search">
 	  </select>
-	  <button class = "dropbtn"> Submit </button>
+	  
       
       <div id="comments" style="padding-top:30px;">
         <h2>Entries</h2>
@@ -25,7 +24,7 @@
                 </address>
                 <time>{{display.createdAt}}</time>
               </header>
-			  <a style="font-size : 20px;padding-top:10px;" ui-sref="forumTopic({id:display._id})">{{display._id}} : {{display.modCode}} : {{display.title}} </a>
+			  <a style="font-size : 20px;padding-top:10px;" ui-sref="forumTopic({id:display._id})">{{display.modCode}} : {{display.title}} </a>
               <div class="comcont">
                 <p>{{display.comment}}</p>
               </div>

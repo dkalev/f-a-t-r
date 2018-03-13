@@ -21,7 +21,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  bookings: [{ type : ObjectId }]
+  bookings: [{ type : String },{type : String}, {type : String},{type:String}]	//	Id, Date, Time, Room
 }, {timestamps: true});
 
 //prehook to hash the password before inserting into db

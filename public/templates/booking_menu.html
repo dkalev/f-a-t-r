@@ -27,9 +27,10 @@
 	  <select id = "selectbox_tr" ng-change ="onChange()" ng-model="select.tr">
 		  <option value = "0"> Select A TR &hellip;</option>
 		  <option ng-repeat = "option in select.trOptions" value="{{option}}">TR+{{option}}</option>
+		  <input type="submit" style=" position:relative;top:10px;"ng-click="submit_table()" value="Search">
 	  </select>
 	  
-	  <button class = "dropbtn" ng-click = "submit_table()"> Submit </button>
+	  
       
 	<div style = "padding-top : 50px">
 		<h1>Result(s)</h1>
@@ -45,34 +46,36 @@
 			  </thead>
 			  <tbody>
 				<tr ng-repeat = "option in table.tbOptions" value = "{{}}">
-				  <td><a href="#">{{option.date}}</a></td>
+				  <td><a href="#" ng-click="selectDate(option)">{{option.date}}</a></td>
 				  <td>{{option.timeslot}}</td>
 				  <td>{{option.room}}</td>
 				  <td>{{option.vacancy}}</td>
 				</tr>
-				<!--<tr>
-				  <td>Value 5</td>
-				  <td>Value 6</td>
-				  <td>Value 7</td>
-				  <td><a href="#">Value 8</a></td>
-				</tr>
-				<tr>
-				  <td>Value 9</td>
-				  <td>Value 10</td>
-				  <td>Value 11</td>
-				  <td>Value 12</td>
-				</tr>
-				<tr>
-				  <td>Value 13</td>
-				  <td><a href="#">Value 14</a></td>
-				  <td>Value 15</td>
-				  <td>Value 16</td>
-				</tr>-->
+
 			  </tbody>
 			</table>
 			</div>
 	</div>
-	<div id="" style = "padding-top:50px;">
+	
+	<div id = "mySelection">
+	<h2> Your Current Selection </h2>
+	<article id = "mySelectionStyle" style = "background-color:#b9deff;border-radius:10px; padding:10px;">
+	  <header>
+		<b>Name : <a href="#">CHICKEN1</a></b>
+	  </header>  
+		<b><br>Tutorial Room :</b> +{{details.room}}</br>
+		<b>Date :</b> {{details.date}} ,
+		<b>Time Slot :</b> {{details.timeslot}}hrs 
+		
+		<button class = "dropbtn" style = "position : relative; right : -50%;"ng-click = "submit_selection()"> Submit </button>
+		<button class = "dropbtn" style = "background-color:#ff2400; position : relative; right : -45%;" ng-click = "clear_selection()"> Clear </button>
+		
+		</br>
+		
+		<b style=""> {{details.returnMsg}} </b>
+	</article>
+	</div>
+	<!--<div id="" style = "padding-top:50px;">
 		<h2>Cheat Sheet Insert TutorialRoom ( Test Insert into mongoDB )</h2>
 		<form name="newform" id = "newform" action="#">
 			<div class="one_third first">
@@ -92,11 +95,11 @@
 				</select>
 			</div>
 			<input type="submit" ng-click="createtutorialroom()" value="Submit Form">
-			<!--<input type="reset" name="reset" value="Reset Form">-->
+			<!--<input type="reset" name="reset" value="Reset Form">
 		</form>
-	</div>
+	</div>-->
     <!-- ################################################################################################ -->
-	<div>
+	<!--<div>
 		<h2>Cheat Sheet Insert TimeSlot ( Test Insert into mongoDB )</h2>
 		<form name="newform" id = "newform" action="#">
 			<div class="one_third first">
@@ -109,7 +112,7 @@
 				<input type="number" placeholder = "Vancancy" ng-model="time.vacancy">
 			</div>
 			<input type="submit" ng-click="createtimeslot()" value="Submit Form">
-			<!--<input type="reset" name="reset" value="Reset Form">-->
+			<!--<input type="reset" name="reset" value="Reset Form">
 		</form>
 	</div>
 	
@@ -126,7 +129,7 @@
 	  </select>
 	  
 	  <input type="submit" ng-click="combination()" value="Combine">
-	</div>
+	</div>-->
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>

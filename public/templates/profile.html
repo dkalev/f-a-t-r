@@ -1,0 +1,41 @@
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="content"> 
+      <!-- ################################################################################################ -->
+      
+      <img class="imgl borderedbox inspace-5" src="../images/demo/imgl.gif" alt="">
+	  <h1>Username : </h1>
+      <h1>Email : </h1>
+	  <h2>Details : lalalalalala </h2>
+      <p></p>
+      <div style = "padding-top : 50px">
+		<h1>Current Booking(s)</h1>
+			<div class="scrollable">
+			<table ng-model="table.tb">
+			  <thead>
+				<tr>
+				  <th>Date</th>
+				  <th>Time Slot</th>
+				  <th>Tutorial Room</th>
+				  <th>Remove?</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr ng-repeat = "option in table.tbOptions" value = "{{option.id}}">
+				  <td>{{option.date}}</td>
+				  <td>{{option.timeslot}}</td>
+				  <td>{{option.room}}</td>
+				  <td><a href="#" ng-click="deleteTiming(option)">Delete</a></td>
+				</tr>
+
+			  </tbody>
+			</table>
+			</div>
+	   </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
