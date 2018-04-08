@@ -10,7 +10,7 @@ angular.module('mainApp')
 		
 		if ( url[1] == 'forumPost' ) {
 			$scope.create = function() {
-				this.forum.postedBy = 'Chicken1';
+				this.forum.postedBy = 'Elthia';
 				this.forum.postType = 'Main';
 				this.forum.parentid = "";
 				ForumPosts.create(this.forum).success(function(data) {
@@ -81,7 +81,7 @@ angular.module('mainApp')
 			
 			
 			$scope.create = function() {
-				this.forum.postedBy = 'Chicken1';
+				this.forum.postedBy = 'XueKu';
 				this.forum.title = 'nil';
 				this.forum.modCode = 'nil';
 				this.forum.postType = 'Reply';
